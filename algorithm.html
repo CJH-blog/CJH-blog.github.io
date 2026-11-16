@@ -1,0 +1,52 @@
+---
+layout: default
+title: "算法"
+description: "算法学习与面试刷题笔记"
+header-img: "img/bg-little-universe.jpg"
+nav-order: 1
+---
+
+<!-- Page Header -->
+{% include intro-header.html type='page' short=true %}
+
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			{%- assign _algo_posts = site.posts | where_exp: "post", "post.categories contains '算法'" | sort: "date" | reverse -%}
+
+			<p style="color:#808080;font-size:.95em;margin-bottom:1.5em;">
+				共 {{ _algo_posts.size }} 篇 · 来自 <code>_posts/算法/</code> 目录下的文章
+			</p>
+
+			{%- for _article in _algo_posts -%}
+			{% comment %} group by year {% endcomment %}
+			{%- assign _currentdate = _article.date | date: '%Y' -%}
+			{%- if _currentdate != _date -%}
+			{%- unless forloop.first -%}</section>{%- endunless -%}
+			<section>
+				<span class="fa listing-seperator">
+					<span class="tag-text">{{ _currentdate }}</span>
+				</span>
+				{%- assign _date = _currentdate -%}
+				{%- endif -%}
+
+				<div class="post-preview">
+					<a href="{{ _article.url | prepend: site.baseurl }}">
+						<h2 class="post-title">
+							{{ _article.title }}
+						</h2>
+						{% if _article.subtitle %}
+						<h3 class="post-subtitle">
+							{{ _article.subtitle }}
+						</h3>
+						{% endif %}
+					</a>
+					<hr>
+				</div>
+				{%- if forloop.last -%}
+			</section>{%- endif -%}
+			{%- endfor -%}
+		</div>
+	</div>
+</div>

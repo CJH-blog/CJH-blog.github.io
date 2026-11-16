@@ -1,4 +1,5 @@
 ---
+categories: [算法]
 title: 数据结构扩展篇一之Binary Lifting
 published: true
 layout: post

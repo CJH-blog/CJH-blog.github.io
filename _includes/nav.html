@@ -23,12 +23,17 @@
                         <li>
                             <a href="{{ site.baseurl }}/">Home</a>
                         </li>
-                        {% for page in site.pages %}
-                        {% if page.title and page.hide-in-nav != true %}
+                        {% assign nav_ordered = site.pages | where_exp: "item", "item.title and item.hide-in-nav != true and item.nav-order" | sort: "nav-order" %}
+                        {% assign nav_rest = site.pages | where_exp: "item", "item.title and item.hide-in-nav != true and item.nav-order == nil" %}
+                        {% for page in nav_ordered %}
                         <li>
                             <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
                         </li>
-                        {% endif %}
+                        {% endfor %}
+                        {% for page in nav_rest %}
+                        <li>
+                            <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+                        </li>
                         {% endfor %}
                         <li class="search-icon">
                             <a href="javascript:void(0)">

@@ -1,0 +1,390 @@
+---
+categories: [算法]
+title: "Interview Algorithm Map: 12 Categories and the Classic LeetCode Problems"
+layout: post
+author: 陈家辉
+tags:
+  - 算法
+  - LeetCode
+  - 面试
+  - 学习笔记
+---
+
+<style>
+/* ========== 文章美化样式（作用域限定在 .kb-article 内，避免影响全局） ========== */
+.kb-article{line-height:1.9;font-size:16px}
+.kb-article h2{font-size:1.45em;margin:2.2em 0 .8em;padding-bottom:.35em;border-bottom:2px solid #eef0f6;color:#1f2430;position:relative;font-weight:700}
+.kb-article h3{font-size:1.15em;margin:1.6em 0 .6em;color:#333a4b;font-weight:700}
+.kb-article p{margin:.6em 0 1em}
+.kb-article ul,.kb-article ol{padding-left:1.4em;margin:.6em 0 1.1em}
+.kb-article li{margin:.35em 0}
+.kb-article a{color:#4f6ef7;text-decoration:none}
+.kb-article a:hover{text-decoration:underline}
+/* 顶部元信息 */
+.kb-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:#f5f7fb;border:1px solid #e7ecf5;border-radius:10px;padding:10px 16px;margin:0 0 26px;color:#5a6478;font-size:.92em}
+.kb-chip{background:#e8effd;color:#2b5fd9;border-radius:20px;padding:2px 12px;font-size:.85em;white-space:nowrap}
+/* Hero 核心结论卡 */
+.kb-hero{background:linear-gradient(135deg,#3b5bf0 0%,#6d3df0 60%,#9b3df0 100%);color:#fff;border-radius:16px;padding:30px 28px;margin:6px 0 26px;box-shadow:0 12px 30px rgba(80,70,229,.28);text-align:center}
+.kb-hero .kb-hero-label{font-size:.85em;letter-spacing:4px;opacity:.85;margin-bottom:12px;font-weight:600}
+.kb-hero .kb-hero-formula{font-size:clamp(1.15rem,2.4vw,1.7rem);font-weight:800;line-height:1.5;margin:0 0 14px}
+.kb-hero .kb-hero-formula .plus{color:#ffe08a;margin:0 8px}
+.kb-hero p{margin:0;font-size:.98em;opacity:.95;max-width:760px;margin:0 auto}
+/* 章节入口条（非标题） */
+.kb-lead{display:flex;align-items:center;gap:14px;background:#fbfcff;border:1px solid #e8edf8;border-radius:12px;padding:16px 18px;margin:1.4em 0}
+.kb-lead .kb-icon{flex:none;width:44px;height:44px;border-radius:50%;background:#e8effd;color:#2b5fd9;font-weight:800;font-size:1.15em;display:flex;align-items:center;justify-content:center}
+.kb-lead b{color:#2b5fd9}
+/* 卡片网格 */
+.kb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:1em 0 1.4em}
+.kb-grid .kb-card{background:#fff;border:1px solid #e7ebf4;border-radius:12px;padding:16px 16px 14px;transition:transform .15s ease,box-shadow .15s ease}
+.kb-grid .kb-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(31,45,120,.10)}
+.kb-grid .kb-card .kb-num{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;border-radius:9px;background:#eef2ff;color:#3d5bf5;font-weight:800;font-size:.92em;margin-bottom:8px;padding:0 8px}
+.kb-grid .kb-card b{display:block;font-size:1em;margin-bottom:4px}
+.kb-grid .kb-card p{margin:0;font-size:.93em;color:#4b5568}
+/* 表格 */
+.kb-table-wrap{overflow-x:auto;margin:1em 0 1.4em;border-radius:12px;border:1px solid #e7ebf4}
+.kb-table-wrap table{width:100%;border-collapse:collapse;background:#fff;font-size:.95em;margin:0}
+.kb-table-wrap thead th{background:#f0f4ff;color:#1f2d5c;font-weight:700;text-align:left;padding:11px 16px;white-space:nowrap;border-bottom:2px solid #dbe4fb}
+.kb-table-wrap tbody td{padding:11px 16px;border-bottom:1px solid #eef1f7;vertical-align:top;color:#3a4152}
+.kb-table-wrap tbody tr:last-child td{border-bottom:none}
+.kb-table-wrap tbody tr:nth-child(even){background:#fafbfe}
+.kb-table-wrap tbody tr:hover{background:#f3f6ff}
+.kb-table-wrap code{background:#f0f2f7;color:#c7254e;border-radius:4px;padding:1px 6px;font-size:.92em}
+/* 流程条 */
+.kb-flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;justify-content:center;background:#f8f9fd;border:1px dashed #cdd6ea;border-radius:14px;padding:20px 16px;margin:1.2em 0}
+.kb-flow .kb-step{flex:1 1 150px;max-width:200px;background:#fff;border:1px solid #dfe5f2;border-radius:10px;padding:12px 10px;text-align:center}
+.kb-flow .kb-step b{display:block;font-size:.92em;color:#22315f;margin-bottom:2px}
+.kb-flow .kb-step small{color:#7b8396;font-size:.8em;line-height:1.4;display:block}
+.kb-flow .kb-arrow{display:flex;align-items:center;color:#4f6ef7;font-weight:800;font-size:1.2em;padding:0 2px}
+.kb-flow .kb-goal{flex:1 1 150px;max-width:200px;background:linear-gradient(135deg,#22c55e,#16a34a);border:none;border-radius:10px;padding:12px 10px;text-align:center;color:#fff}
+.kb-flow .kb-goal b{display:block;font-size:.92em;margin-bottom:2px}
+.kb-flow .kb-goal small{font-size:.8em;opacity:.92;display:block;line-height:1.4}
+.kb-flow-note{text-align:center;color:#7b8396;font-size:.85em;margin:-.4em 0 1.4em}
+/* 引用 callout */
+.kb-callout{background:#fff7ea;border:1px solid #ffe0b0;border-left:4px solid #f5a623;border-radius:10px;padding:12px 16px;margin:1.2em 0;font-size:.95em;color:#5a4a1f}
+.kb-callout b{color:#b26a00}
+.kb-callout.kb-warn{background:#fff1f1;border-color:#ffd0d0;border-left-color:#e5484d;color:#5c2b2b}
+.kb-callout.kb-warn b{color:#c02a2a}
+/* 代码块 */
+.kb-code-wrap{position:relative;margin:1em 0 1.4em}
+.kb-code-wrap .kb-code-lang{position:absolute;top:0;right:0;background:#e6ebfb;color:#3d5bf5;font-size:.75em;font-weight:700;padding:2px 10px;border-radius:0 10px 0 10px;letter-spacing:.5px}
+.kb-article pre{background:#1f2430;color:#e6edf3;border-radius:10px;padding:18px 20px 16px;overflow-x:auto;margin:0;font-size:.88em;line-height:1.7;font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace}
+.kb-article pre code{background:none;color:inherit;padding:0;border-radius:0;font-size:1em;white-space:pre}
+.kb-article code{background:#f0f2f7;color:#c7254e;border-radius:4px;padding:1px 6px;font-size:.92em}
+/* 结论列表 */
+.kb-conclusion{background:#f6f8ff;border:1px solid #dde6ff;border-radius:14px;padding:20px 20px 8px;margin:1.2em 0}
+.kb-conclusion ol{margin:0;padding-left:0;list-style:none;counter-reset:concl}
+.kb-conclusion li{counter-increment:concl;position:relative;padding:6px 0 10px 44px;border-bottom:1px dashed #e2e9fb}
+.kb-conclusion li:last-child{border-bottom:none}
+.kb-conclusion li::before{content:counter(concl);position:absolute;left:0;top:8px;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#4f6ef7,#9b3df0);color:#fff;font-weight:800;font-size:.95em;display:flex;align-items:center;justify-content:center}
+.kb-conclusion b{color:#27409e}
+/* 来源 */
+.kb-source{margin-top:2em;padding:14px 18px;background:#f8f9fb;border-left:3px solid #c8d2e8;border-radius:0 8px 8px 0;font-size:.9em;color:#6b7280}
+.kb-source a{color:#4f6ef7;text-decoration:none}
+@media (max-width:767px){.kb-flow .kb-arrow{transform:rotate(90deg);padding:2px 0}.kb-hero{padding:22px 16px}}
+</style>
+
+<div class="kb-article">
+
+<div class="kb-meta">
+  <span>Interview prep roadmap · problem list first, solutions logged as I solve them</span>
+  <span class="kb-chip">LeetCode</span>
+  <span class="kb-chip">Interview</span>
+  <span class="kb-chip">Roadmap</span>
+</div>
+
+<div class="kb-hero">
+  <div class="kb-hero-label">One sentence summary</div>
+  <div class="kb-hero-formula">12 categories <span class="plus">→</span> ~55 classic problems <span class="plus">→</span> solve &amp; log <span class="plus">→</span> review by pattern</div>
+  <p>This post is a living document: the category map and the classic problem list are fixed now, and the solution log under each category will be filled in progressively as I work through the problems.</p>
+</div>
+
+<h2 id="how-to-use">How This Roadmap Works</h2>
+
+<div class="kb-lead">
+  <div class="kb-icon">🗺️</div>
+  <div>Every interview problem belongs to a small set of <b>patterns</b>. Learn the pattern first, then drill representative problems — not the other way around.</div>
+</div>
+
+<div class="kb-flow">
+  <div class="kb-step"><b>1. Pick a category</b><small>one pattern at a time, no random picking</small></div>
+  <div class="kb-arrow">→</div>
+  <div class="kb-step"><b>2. Solve the listed problems</b><small>click a title to open it on LeetCode</small></div>
+  <div class="kb-arrow">→</div>
+  <div class="kb-step"><b>3. Log the solution</b><small>idea, complexity, pitfalls (template below)</small></div>
+  <div class="kb-arrow">→</div>
+  <div class="kb-step"><b>4. Update the status</b><small>mark the problem as done in the table</small></div>
+  <div class="kb-arrow">→</div>
+  <div class="kb-goal"><b>Pattern mastered</b><small>re-solve from scratch after 1 week</small></div>
+</div>
+
+<p>Status legend used in every table below: <code>☐</code> = not solved yet, <code>✅</code> = solved, <code>🔁</code> = solved once but needs a re-solve. Problem titles link directly to their LeetCode pages (open in a new tab). When I solve a problem, I append a log entry under that category's table using the template in the <a href="#log">Solution Log Template</a> section.</p>
+
+<h2 id="overview">The 12 Categories at a Glance</h2>
+
+<div class="kb-table-wrap">
+  <table>
+    <thead>
+      <tr><th scope="col">Category</th><th scope="col">Core idea</th><th scope="col">Typical signal in the problem</th><th scope="col">Priority</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>Two Pointers</b></td><td>Shrink the search space with two indices</td><td>Sorted array, pair/triplet with a target, in-place partition</td><td>P0</td></tr>
+      <tr><td><b>Sliding Window</b></td><td>Grow/shrink a contiguous window, keep state inside</td><td>Longest / shortest / count of substring or subarray</td><td>P0</td></tr>
+      <tr><td><b>Binary Search</b></td><td>Halve the space on a monotonic predicate</td><td>Sorted or "answer space is monotonic"</td><td>P0</td></tr>
+      <tr><td><b>Hash Map</b></td><td>Trade memory for O(1) lookups</td><td>"Have I seen this before?", counting, prefix sums</td><td>P0</td></tr>
+      <tr><td><b>Linked List</b></td><td>Pointer surgery, dummy head, fast/slow</td><td>Reverse, merge, detect cycle, middle node</td><td>P0</td></tr>
+      <tr><td><b>Stack / Monotonic Stack</b></td><td>Most recent unresolved element on top</td><td>Matching pairs, next greater/smaller element, histogram</td><td>P1</td></tr>
+      <tr><td><b>Trees (DFS/BFS)</b></td><td>Recursion on subtrees; queue for level order</td><td>Any nested structure with left/right children</td><td>P0</td></tr>
+      <tr><td><b>Heap / Priority Queue</b></td><td>Always touch the current min/max only</td><td>Top-K, k-th largest, streaming median, merge k sources</td><td>P1</td></tr>
+      <tr><td><b>Backtracking</b></td><td>Choose → explore → un-choose</td><td>Enumerate all combinations / permutations / paths</td><td>P1</td></tr>
+      <tr><td><b>Graphs</b></td><td>BFS / DFS / topological sort / union-find</td><td>Grids, prerequisites, connectivity, shortest steps</td><td>P1</td></tr>
+      <tr><td><b>Dynamic Programming</b></td><td>Optimal substructure + overlapping subproblems</td><td>Min/max/count ways, "can it be done", sequences</td><td>P0</td></tr>
+      <tr><td><b>Greedy &amp; Intervals</b></td><td>Local optimal choice with an exchange argument</td><td>Scheduling, jumping, merging, "minimum number of ..."</td><td>P1</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 id="problems">The Problem Map</h2>
+
+<p>Problem numbers refer to LeetCode. Difficulty: <code>E</code> = Easy, <code>M</code> = Medium, <code>H</code> = Hard. Click a problem title to open it on LeetCode. Start with the first two or three in each category; the last one is usually the "boss fight".</p>
+
+<h3>1. Two Pointers</h3>
+
+<div class="kb-table-wrap">
+  <table>
+    <thead>
+      <tr><th scope="col">#</th><th scope="col">Problem</th><th scope="col">Diff</th><th scope="col">Key idea</th><th scope="col">Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>167</td><td><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="noopener">Two Sum II – Input Array Is Sorted</a></td><td><code>M</code></td><td>Left/right converge on sorted input</td><td>✅</td></tr>
+      <tr><td>15</td><td><a href="https://leetcode.com/problems/3sum/" target="_blank" rel="noopener">3Sum</a></td><td><code>M</code></td><td>Sort + fix one index + two pointers, skip duplicates</td><td>✅</td></tr>
+      <tr><td>11</td><td><a href="https://leetcode.com/problems/container-with-most-water/" target="_blank" rel="noopener">Container With Most Water</a></td><td><code>M</code></td><td>Move the shorter side inward</td><td>✅</td></tr>
+      <tr><td>42</td><td><a href="https://leetcode.com/problems/trapping-rain-water/" target="_blank" rel="noopener">Trapping Rain Water</a></td><td><code>H</code></td><td>Water level = min(maxLeft, maxRight); two-pointer version</td><td>✅</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>2. Sliding Window</h3>
+
+<div class="kb-table-wrap">
+  <table>
+    <thead>
+      <tr><th scope="col">#</th><th scope="col">Problem</th><th scope="col">Diff</th><th scope="col">Key idea</th><th scope="col">Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>3</td><td><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="noopener">Longest Substring Without Repeating Characters</a></td><td><code>M</code></td><td>Shrink left when a duplicate enters</td><td>☐</td></tr>
+      <tr><td>438</td><td><a href="https://leetcode.com/problems/find-all-anagrams-in-a-string/" target="_blank" rel="noopener">Find All Anagrams in a String</a></td><td><code>M</code></td><td>Fixed-size window + frequency counter</td><td>☐</td></tr>
+      <tr><td>76</td><td><a href="https://leetcode.com/problems/minimum-window-substring/" target="_blank" rel="noopener">Minimum Window Substring</a></td><td><code>H</code></td><td>Need/have counters, contract while valid</td><td>☐</td></tr>
+      <tr><td>239</td><td><a href="https://leetcode.com/problems/sliding-window-maximum/" target="_blank" rel="noopener">Sliding Window Maximum</a></td><td><code>H</code></td><td>Monotonic decreasing deque</td><td>☐</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>3. Binary Search</h3>
+
+<div class="kb-table-wrap">
+  <table>
+    <thead>
+      <tr><th scope="col">#</th><th scope="col">Problem</th><th scope="col">Diff</th><th scope="col">Key idea</th><th scope="col">Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>704</td><td><a href="https://leetcode.com/problems/binary-search/" target="_blank" rel="noopener">Binary Search</a></td><td><code>E</code></td><td>Get the loop invariant right once, reuse everywhere</td><td>☐</td></tr>
+      <tr><td>33</td><td><a href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="noopener">Search in Rotated Sorted Array</a></td><td><code>M</code></td><td>One half is always sorted — decide which</td><td>☐</td></tr>
+      <tr><td>153</td><td><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/" target="_blank" rel="noopener">Find Minimum in Rotated Sorted Array</a></td><td><code>M</code></td><td>Compare mid against the right end</td><td>☐</td></tr>
+      <tr><td>4</td><td><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">Median of Two Sorted Arrays</a></td><td><code>H</code></td><td>Binary search the partition of the shorter array</td><td>☐</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>4. Hash Map</h3>
+
+<div class="kb-table-wrap">
+  <table>
+    <thead>
+      <tr><th scope="col">#</th><th scope="col">Problem</th><th scope="col">Diff</th><th scope="col">Key idea</th><th scope="col">Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="noopener">Two Sum</a></td><td><code>E</code></td><td>Complement lookup in one pass</td><td>☐</td></tr>
+      <tr><td>49</td><td><a href="https://leetcode.com/problems/group-anagrams/" target="_blank" rel="noopener">Group Anagrams</a></td><td><code>M</code></td><td>Canonical key: sorted string or char count</td><td>☐</td></tr>
+      <tr><td>128</td><td><a href="https://leetcode.com/problems/longest-consecutive-sequence/" target="_blank" rel="noopener">Longest Consecutive Sequence</a></td><td><code>M</code></td><td>Set + only start counting at sequence heads</td><td>☐</td></tr>
+      <tr><td>560</td><td><a href="https://leetcode.com/problems/subarray-sum-equals-k/" target="_blank" rel="noopener">Subarray Sum Equals K</a></td><td><code>M</code></td><td>Prefix sum + count of seen prefixes in a map</td><td>☐</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>5. Linked List</h3>
+
+<div class="kb-table-wrap">
+  <table>
+    <thead>
+      <tr><th scope="col">#</th><th scope="col">Problem</th><th scope="col">Diff</th><th scope="col">Key idea</th><th scope="col">Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>206</td><td><a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank" rel="noopener">Reverse Linked List</a></td><td><code>E</code></td><td>prev/curr/next; also write the recursive version</td><td>☐</td></tr>
+      <tr><td>21</td><td><a href="https://leetcode.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">Merge Two Sorted Lists</a></td><td><code>E</code></td><td>Dummy head, tail splice</td><td>☐</td></tr>
+      <tr><td>141</td><td><a href="https://leetcode.com/problems/linked-list-cycle/" target="_blank" rel="noopener">Linked List Cycle</a></td><td><code>E</code></td><td>Fast/slow pointers meet inside a cycle</td><td>☐</td></tr>
+      <tr><td>19</td><td><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/" target="_blank" rel="noopener">Remove Nth Node From End of List</a></td><td><code>M</code></td><td>Two pointers with n gap + dummy head</td><td>☐</td></tr>
+      <tr><td>25</td><td><a href="https://leetcode.com/problems/reverse-nodes-in-k-group/" target="_blank" rel="noopener">Reverse Nodes in k-Group</a></td><td><code>H</code></td><td>Group-wise reverse, careful reconnection</td><td>☐</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>6. Stack / Monotonic Stack</h3>
+
+<div class="kb-table-wrap">
+  <table>
+    <thead>
+      <tr><th scope="col">#</th><th scope="col">Problem</th><th scope="col">Diff</th><th scope="col">Key idea</th><th scope="col">Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>20</td><td><a href="https://leetcode.com/problems/valid-parentheses/" target="_blank" rel="noopener">Valid Parentheses</a></td><td><code>E</code></td><td>Push opens, match closes</td><td>☐</td></tr>
+      <tr><td>155</td><td><a href="https://leetcode.com/problems/min-stack/" target="_blank" rel="noopener">Min Stack</a></td><td><code>M</code></td><td>Auxiliary stack of current minimums</td><td>☐</td></tr>
+      <tr><td>739</td><td><a href="https://leetcode.com/problems/daily-temperatures/" target="_blank" rel="noopener">Daily Temperatures</a></td><td><code>M</code></td><td>Monotonic stack, pop on "next greater"</td><td>☐</td></tr>
+      <tr><td>84</td><td><a href="https://leetcode.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">Largest Rectangle in Histogram</a></td><td><code>H</code></td><td>Pop when shorter bar arrives; width from stack</td><td>☐</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>7. Trees (DFS / BFS)</h3>
+
+<div class="kb-table-wrap">
+  <table>
+    <thead>
+      <tr><th scope="col">#</th><th scope="col">Problem</th><th scope="col">Diff</th><th scope="col">Key idea</th><th scope="col">Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>104</td><td><a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/" target="_blank" rel="noopener">Maximum Depth of Binary Tree</a></td><td><code>E</code></td><td>1 + max(left, right)</td><td>☐</td></tr>
+      <tr><td>98</td><td><a href="https://leetcode.com/problems/validate-binary-search-tree/" target="_blank" rel="noopener">Validate Binary Search Tree</a></td><td><code>M</code></td><td>Pass down (min, max) bounds or inorder check</td><td>☐</td></tr>
+      <tr><td>102</td><td><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/" target="_blank" rel="noopener">Binary Tree Level Order Traversal</a></td><td><code>M</code></td><td>BFS with per-level snapshot</td><td>☐</td></tr>
+      <tr><td>236</td><td><a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/" target="_blank" rel="noopener">Lowest Common Ancestor of a Binary Tree</a></td><td><code>M</code></td><td>Postorder: node found in both subtrees</td><td>☐</td></tr>
+      <tr><td>124</td><td><a href="https://leetcode.com/problems/binary-tree-maximum-path-sum/" target="_blank" rel="noopener">Binary Tree Maximum Path Sum</a></td><td><code>H</code></td><td>Return single-arm gain, combine both arms locally</td><td>☐</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>8. Heap / Priority Queue</h3>
+
+<div class="kb-table-wrap">
+  <table>
+    <thead>
+      <tr><th scope="col">#</th><th scope="col">Problem</th><th scope="col">Diff</th><th scope="col">Key idea</th><th scope="col">Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>215</td><td><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/" target="_blank" rel="noopener">Kth Largest Element in an Array</a></td><td><code>M</code></td><td>Size-k min-heap, or quickselect</td><td>☐</td></tr>
+      <tr><td>347</td><td><a href="https://leetcode.com/problems/top-k-frequent-elements/" target="_blank" rel="noopener">Top K Frequent Elements</a></td><td><code>M</code></td><td>Count map + heap (or bucket sort)</td><td>☐</td></tr>
+      <tr><td>23</td><td><a href="https://leetcode.com/problems/merge-k-sorted-lists/" target="_blank" rel="noopener">Merge k Sorted Lists</a></td><td><code>H</code></td><td>Min-heap over current heads of k lists</td><td>☐</td></tr>
+      <tr><td>295</td><td><a href="https://leetcode.com/problems/find-median-from-data-stream/" target="_blank" rel="noopener">Find Median from Data Stream</a></td><td><code>H</code></td><td>Two balanced heaps (max-heap + min-heap)</td><td>☐</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>9. Backtracking</h3>
+
+<div class="kb-table-wrap">
+  <table>
+    <thead>
+      <tr><th scope="col">#</th><th scope="col">Problem</th><th scope="col">Diff</th><th scope="col">Key idea</th><th scope="col">Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>78</td><td><a href="https://leetcode.com/problems/subsets/" target="_blank" rel="noopener">Subsets</a></td><td><code>M</code></td><td>Include/exclude decision tree</td><td>☐</td></tr>
+      <tr><td>46</td><td><a href="https://leetcode.com/problems/permutations/" target="_blank" rel="noopener">Permutations</a></td><td><code>M</code></td><td>Used-set or swap-in-place</td><td>☐</td></tr>
+      <tr><td>39</td><td><a href="https://leetcode.com/problems/combination-sum/" target="_blank" rel="noopener">Combination Sum</a></td><td><code>M</code></td><td>Reuse allowed → recurse with same index</td><td>☐</td></tr>
+      <tr><td>79</td><td><a href="https://leetcode.com/problems/word-search/" target="_blank" rel="noopener">Word Search</a></td><td><code>M</code></td><td>DFS on grid, mark/unmark visited</td><td>☐</td></tr>
+      <tr><td>51</td><td><a href="https://leetcode.com/problems/n-queens/" target="_blank" rel="noopener">N-Queens</a></td><td><code>H</code></td><td>Row by row, track column/diagonal conflicts</td><td>☐</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>10. Graphs</h3>
+
+<div class="kb-table-wrap">
+  <table>
+    <thead>
+      <tr><th scope="col">#</th><th scope="col">Problem</th><th scope="col">Diff</th><th scope="col">Key idea</th><th scope="col">Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>200</td><td><a href="https://leetcode.com/problems/number-of-islands/" target="_blank" rel="noopener">Number of Islands</a></td><td><code>M</code></td><td>Flood fill DFS/BFS on the grid</td><td>☐</td></tr>
+      <tr><td>133</td><td><a href="https://leetcode.com/problems/clone-graph/" target="_blank" rel="noopener">Clone Graph</a></td><td><code>M</code></td><td>Old-to-new map while traversing</td><td>☐</td></tr>
+      <tr><td>207</td><td><a href="https://leetcode.com/problems/course-schedule/" target="_blank" rel="noopener">Course Schedule</a></td><td><code>M</code></td><td>Cycle detection via topological sort (Kahn)</td><td>☐</td></tr>
+      <tr><td>547</td><td><a href="https://leetcode.com/problems/number-of-provinces/" target="_blank" rel="noopener">Number of Provinces</a></td><td><code>M</code></td><td>Union-Find basics</td><td>☐</td></tr>
+      <tr><td>127</td><td><a href="https://leetcode.com/problems/word-ladder/" target="_blank" rel="noopener">Word Ladder</a></td><td><code>H</code></td><td>BFS on implicit word graph, bidirectional</td><td>☐</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>11. Dynamic Programming</h3>
+
+<div class="kb-table-wrap">
+  <table>
+    <thead>
+      <tr><th scope="col">#</th><th scope="col">Problem</th><th scope="col">Diff</th><th scope="col">Key idea</th><th scope="col">Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>70</td><td><a href="https://leetcode.com/problems/climbing-stairs/" target="_blank" rel="noopener">Climbing Stairs</a></td><td><code>E</code></td><td>dp[i] = dp[i-1] + dp[i-2]</td><td>☐</td></tr>
+      <tr><td>198</td><td><a href="https://leetcode.com/problems/house-robber/" target="_blank" rel="noopener">House Robber</a></td><td><code>M</code></td><td>Rob or skip: max(take, skip)</td><td>☐</td></tr>
+      <tr><td>322</td><td><a href="https://leetcode.com/problems/coin-change/" target="_blank" rel="noopener">Coin Change</a></td><td><code>M</code></td><td>Unbounded knapsack, min coins</td><td>☐</td></tr>
+      <tr><td>300</td><td><a href="https://leetcode.com/problems/longest-increasing-subsequence/" target="_blank" rel="noopener">Longest Increasing Subsequence</a></td><td><code>M</code></td><td>O(n²) DP then O(n log n) with patience tails</td><td>☐</td></tr>
+      <tr><td>53</td><td><a href="https://leetcode.com/problems/maximum-subarray/" target="_blank" rel="noopener">Maximum Subarray</a></td><td><code>M</code></td><td>Kadane: extend or restart</td><td>☐</td></tr>
+      <tr><td>72</td><td><a href="https://leetcode.com/problems/edit-distance/" target="_blank" rel="noopener">Edit Distance</a></td><td><code>M</code></td><td>2D DP over insert/delete/replace</td><td>☐</td></tr>
+      <tr><td>5</td><td><a href="https://leetcode.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">Longest Palindromic Substring</a></td><td><code>M</code></td><td>Expand around centers (or interval DP)</td><td>☐</td></tr>
+      <tr><td>416</td><td><a href="https://leetcode.com/problems/partition-equal-subset-sum/" target="_blank" rel="noopener">Partition Equal Subset Sum</a></td><td><code>M</code></td><td>0/1 knapsack to target = sum/2</td><td>☐</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>12. Greedy &amp; Intervals</h3>
+
+<div class="kb-table-wrap">
+  <table>
+    <thead>
+      <tr><th scope="col">#</th><th scope="col">Problem</th><th scope="col">Diff</th><th scope="col">Key idea</th><th scope="col">Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>121</td><td><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank" rel="noopener">Best Time to Buy and Sell Stock</a></td><td><code>E</code></td><td>Track min price so far, best delta</td><td>☐</td></tr>
+      <tr><td>55</td><td><a href="https://leetcode.com/problems/jump-game/" target="_blank" rel="noopener">Jump Game</a></td><td><code>M</code></td><td>Farthest reachable index</td><td>☐</td></tr>
+      <tr><td>45</td><td><a href="https://leetcode.com/problems/jump-game-ii/" target="_blank" rel="noopener">Jump Game II</a></td><td><code>M</code></td><td>BFS layers over reachability</td><td>☐</td></tr>
+      <tr><td>56</td><td><a href="https://leetcode.com/problems/merge-intervals/" target="_blank" rel="noopener">Merge Intervals</a></td><td><code>M</code></td><td>Sort by start, merge overlaps</td><td>☐</td></tr>
+      <tr><td>435</td><td><a href="https://leetcode.com/problems/non-overlapping-intervals/" target="_blank" rel="noopener">Non-overlapping Intervals</a></td><td><code>M</code></td><td>Keep intervals with earliest end</td><td>☐</td></tr>
+      <tr><td>763</td><td><a href="https://leetcode.com/problems/partition-labels/" target="_blank" rel="noopener">Partition Labels</a></td><td><code>M</code></td><td>Last occurrence of each char extends the cut</td><td>☐</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="kb-callout">
+  <b>Scope note</b>: Trie, bit manipulation and design-style problems (e.g. LRU Cache) are deliberately left out of the 12 core categories for now — they will be appended as a "bonus" section once the core list is cleared.
+</div>
+
+<h2 id="log">Solution Log Template</h2>
+
+<div class="kb-lead">
+  <div class="kb-icon">📝</div>
+  <div>Solutions are <b>not</b> pre-filled. After solving a problem, append a log entry directly below that category's table using this template.</div>
+</div>
+
+<div class="kb-code-wrap">
+  <span class="kb-code-lang">TEMPLATE</span>
+  <pre><code>### LC 167. Two Sum II - Input Array Is Sorted
+- Date: 2026-11-14
+- Final approach: two prointers
+- Complexity: O(n) time, O(1) space
+</code></pre>
+</div>
+
+<div class="kb-callout kb-warn">
+  <b>Rule for myself</b>: no copy-pasting solutions into this log. Read the editorial only after 30+ minutes of genuine attempt, then write the log in my own words — the log is the part I will actually re-read before interviews.
+</div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<div class="kb-conclusion">
+  <ol>
+    <li><b>Pattern beats problem count</b>: 12 categories cover the vast majority of interview questions; drilling by pattern beats grinding randomly.</li>
+    <li><b>The list is fixed, the log grows</b>: problem tables stay as-is; solution logs accumulate under each category as problems get solved.</li>
+    <li><b>Status is the progress bar</b>: move problems from ☐ to ✅ (and 🔁 after spaced re-solves) — when the tables are mostly green, the roadmap is done.</li>
+  </ol>
+</div>
+
+<div class="kb-source">
+  Problem set compiled from widely-used interview prep lists (LeetCode Top Interview 150, Blind 75, NeetCode 150 overlap) · All problem titles link directly to their pages on <a href="https://leetcode.com/">leetcode.com</a> · Solution sections to be filled in progressively
+</div>
+
+</div>

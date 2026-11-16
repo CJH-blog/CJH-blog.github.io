@@ -1,4 +1,5 @@
 ---
+categories: [算法]
 title: 基本数据结构篇二之并查集
 published: true
 layout: post

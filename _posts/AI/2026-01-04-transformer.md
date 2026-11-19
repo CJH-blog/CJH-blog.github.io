@@ -1,4 +1,5 @@
 ---
+categories: [AI]
 title: transformer学习
 published: false
 layout: post

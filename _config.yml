@@ -8,8 +8,7 @@ header-img: img/home-bg-o.jpg
 email: 876492153@qq.com
 keyword: "后端开发"
 url: "https://cjh-blog.github.io" # your host, for absolute URL
-baseurl: "/Chenjiahui0.github.io" # project site path under the CJH-blog organization
-
+baseurl: ""
 # Publish posts or collection documents with a future date.
 future: true
 

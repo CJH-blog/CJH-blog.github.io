@@ -4,22 +4,259 @@ title: "About"
 description: "「他单纯只想把日子过得不浪费」"
 header-img: "img/bg-walle.jpg"
 header-mask: 0.3
-multilingual: true
+multilingual: false
 nav-order: 3
 ---
+
+<style>
+    .post-container.en { display: none; }
+
+    .post-container .about-body {
+        --about-accent: #0085a1;
+        --about-accent-light: #e9f5f7;
+        --about-ink: #34495e;
+        --about-muted: #7f8c8d;
+        --about-line: #e6ecef;
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--about-ink);
+    }
+    .post-container .about-body p { margin: 12px 0; }
+
+    .post-container .about-body .about-intro {
+        position: relative;
+        margin: 6px 0 34px;
+        padding: 26px 28px 26px 32px;
+        overflow: hidden;
+        border: 1px solid #e1eef1;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #f2fafb 0%, #fdfdfd 100%);
+        box-shadow: 0 6px 22px rgba(0, 133, 161, .06);
+    }
+    .post-container .about-body .about-intro::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 4px;
+        background: linear-gradient(180deg, #0085a1, #7cc8d4);
+    }
+    .post-container .about-body .about-lead {
+        margin: 0 0 8px;
+        font-size: 19px;
+        line-height: 1.65;
+        font-weight: 600;
+    }
+    .post-container .about-body .about-sub {
+        margin: 0;
+        color: var(--about-muted);
+        font-size: 13px;
+        letter-spacing: .06em;
+    }
+
+    .post-container .about-body h2 {
+        position: relative;
+        margin: 44px 0 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--about-line);
+        font-size: 23px;
+        letter-spacing: .01em;
+    }
+    .post-container .about-body h2::before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 46px;
+        height: 2px;
+        margin-bottom: 0;
+        background: var(--about-accent);
+    }
+
+    .post-container .about-body .about-timeline {
+        position: relative;
+        margin: 20px 0 4px 24px;
+    }
+    .post-container .about-body .about-timeline::before {
+        content: "";
+        position: absolute;
+        top: 14px;
+        bottom: 14px;
+        left: -24px;
+        width: 1px;
+        background: var(--about-line);
+    }
+    .post-container .about-body .about-role {
+        position: relative;
+        margin: 0 0 18px;
+        padding: 20px 22px 18px;
+        border: 1px solid var(--about-line);
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 4px 16px rgba(31, 45, 61, .04);
+        transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .post-container .about-body .about-role:last-child { margin-bottom: 0; }
+    .post-container .about-body .about-role:hover {
+        transform: translateY(-2px);
+        border-color: #cfe3e8;
+        box-shadow: 0 10px 26px rgba(31, 45, 61, .08);
+    }
+    .post-container .about-body .about-role::before {
+        content: "";
+        position: absolute;
+        top: 26px;
+        left: -32px;
+        width: 11px;
+        height: 11px;
+        border: 3px solid var(--about-accent);
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 0 0 4px var(--about-accent-light);
+    }
+    .post-container .about-body .about-role h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+        color: var(--about-ink);
+    }
+    .post-container .about-body .about-role p { margin: 6px 0 12px; }
+    .post-container .about-body .about-role-note {
+        display: inline-block;
+        margin-left: 8px;
+        padding: 3px 9px;
+        border-radius: 999px;
+        background: var(--about-accent-light);
+        color: var(--about-accent);
+        font-size: 12px;
+        font-weight: 600;
+        vertical-align: middle;
+    }
+    .post-container .about-body .about-facts {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .post-container .about-body .about-facts li {
+        position: relative;
+        margin-bottom: 8px;
+        padding-left: 18px;
+    }
+    .post-container .about-body .about-facts li::before {
+        content: "";
+        position: absolute;
+        top: .8em;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--about-accent);
+    }
+    .post-container .about-body .about-facts strong {
+        color: var(--about-accent);
+        font-weight: 600;
+    }
+
+    .post-container .about-body .about-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .post-container .about-body .about-list li {
+        position: relative;
+        margin-bottom: 14px;
+        padding-left: 26px;
+    }
+    .post-container .about-body .about-list li::before {
+        content: "";
+        position: absolute;
+        top: .75em;
+        left: 0;
+        width: 14px;
+        height: 2px;
+        background: var(--about-accent);
+    }
+    .post-container .about-body .about-list a,
+    .post-container .about-body .about-contact a {
+        color: var(--about-accent);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(0, 133, 161, .35);
+    }
+    .post-container .about-body .about-list a:hover,
+    .post-container .about-body .about-contact a:hover {
+        border-bottom-color: var(--about-accent);
+    }
+
+    .post-container .about-body .about-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .post-container .about-body .about-tag {
+        padding: 5px 11px;
+        border: 1px solid #d9e6ea;
+        border-radius: 999px;
+        background: #f5fafb;
+        color: #337ab7;
+        font-size: 13px;
+        line-height: 1.4;
+        transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+    .post-container .about-body .about-tag:hover {
+        transform: translateY(-2px);
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(0, 133, 161, .12);
+    }
+
+    .post-container .about-body .about-contact {
+        margin: 0;
+        padding: 20px 24px;
+        border: 1px dashed #b8dbe2;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #eef8fa, #f8fcfd);
+        color: var(--about-ink);
+    }
+
+    @media screen and (max-width: 768px) {
+        .post-container .about-body .about-intro {
+            margin-bottom: 28px;
+            padding: 20px 20px 20px 24px;
+        }
+        .post-container .about-body .about-lead { font-size: 17px; }
+        .post-container .about-body h2 { margin-top: 34px; font-size: 21px; }
+        .post-container .about-body .about-timeline { margin-left: 16px; }
+        .post-container .about-body .about-timeline::before { left: -16px; }
+        .post-container .about-body .about-role { padding: 16px 16px 14px; }
+        .post-container .about-body .about-role::before {
+            top: 22px;
+            left: -22px;
+            width: 9px;
+            height: 9px;
+            border-width: 2px;
+            box-shadow: 0 0 0 3px var(--about-accent-light);
+        }
+        .post-container .about-body .about-role-note {
+            margin-left: 0;
+            margin-top: 4px;
+        }
+        .post-container .about-body .about-contact { padding: 16px 18px; }
+    }
+</style>
 
 {% include multilingual-sel.html %}
 
 <!-- Chinese Version -->
-<div class="zh post-container">
-    {% capture about_zh %}{% include about/zh.md %}{% endcapture %}
-    {{ about_zh | markdownify }}
+<div class="zh post-container" lang="zh-CN">
+    {% include about/zh.html %}
 </div>
 
 <!-- English Version -->
-<div class="en post-container">
-    {% capture about_en %}{% include about/en.md %}{% endcapture %}
-    {{ about_en | markdownify }}
+<div class="en post-container" lang="en">
+    {% include about/en.html %}
 </div>
 
 
@@ -45,3 +282,32 @@ nav-order: 3
 </script>
 <!-- disqus 公共JS代码 end -->
 {% endif %}
+
+<!-- 自包含语言切换：不依赖主题 footer 脚本，直接控制两个版本容器的显示 -->
+<script type="text/javascript">
+(function () {
+    var zh = document.querySelector('.zh.post-container');
+    var en = document.querySelector('.en.post-container');
+    var select = document.querySelector('select.sel-lang');
+    if (!zh || !en || !select) return;
+
+    function apply(lang) {
+        var showEn = lang === 'en';
+        zh.style.display = showEn ? 'none' : 'block';
+        en.style.display = showEn ? 'block' : 'none';
+        select.selectedIndex = showEn ? 1 : 0;
+    }
+
+    var params = new URLSearchParams(window.location.search);
+    apply(params.get('lang') === 'en' ? 'en' : 'zh');
+
+    window.onLanChange = function (index) {
+        var next = String(index) === '1' ? 'en' : 'zh';
+        apply(next);
+        var p = new URLSearchParams(window.location.search);
+        if (next === 'zh') { p.delete('lang'); } else { p.set('lang', next); }
+        var q = p.toString();
+        history.replaceState(null, '', window.location.pathname + (q ? '?' + q : '') + window.location.hash);
+    };
+})();
+</script>

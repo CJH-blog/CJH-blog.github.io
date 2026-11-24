@@ -296,18 +296,22 @@ nav-order: 3
         zh.style.display = showEn ? 'none' : 'block';
         en.style.display = showEn ? 'block' : 'none';
         select.selectedIndex = showEn ? 1 : 0;
+        document.documentElement.lang = showEn ? 'en' : 'zh-CN';
     }
 
     var params = new URLSearchParams(window.location.search);
     apply(params.get('lang') === 'en' ? 'en' : 'zh');
 
-    window.onLanChange = function (index) {
+    function switchTo(index) {
         var next = String(index) === '1' ? 'en' : 'zh';
         apply(next);
         var p = new URLSearchParams(window.location.search);
         if (next === 'zh') { p.delete('lang'); } else { p.set('lang', next); }
         var q = p.toString();
         history.replaceState(null, '', window.location.pathname + (q ? '?' + q : '') + window.location.hash);
-    };
+    }
+
+    window.onLanChange = switchTo;
+    select.addEventListener('change', function () { switchTo(select.value); });
 })();
 </script>
